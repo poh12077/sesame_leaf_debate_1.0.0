@@ -22,24 +22,29 @@ public class UserDAO {
 	            
 	        } catch (Exception e) {
 	            e.printStackTrace();
-	        }
-	    }
+			}
+		}
 	    
-	    public int update(String check) {
+	    public int update(Data data) {
 	    	try {
+	    		String check = data.getCheck();
+	    		int number = data.getNumber();
 	    		String sql=null;
 	              
 	    		if(check.equals("1")) {
-	    			sql = "update list set one = one + 1";
+	    			sql = "update list set one = one + 1 where number = ?";
 	    			 pstmt = conn.prepareStatement(sql);
+	    			 pstmt.setInt(1, number);
 	    	          return pstmt.executeUpdate();
 	    		}else if(check.equals("2")) {
-	    			sql = "update list set two = two + 1";
+	    			sql = "update list set two = two + 1 where number = ?";
 	    			 pstmt = conn.prepareStatement(sql);
+	    			 pstmt.setInt(1, number);
 	    			 return	pstmt.executeUpdate();
 	    		}else if(check.equals("3")) {
-	    			sql = "update list set three = three + 1";
+	    			sql = "update list set three = three + 1 where number = ?";
 	    			 pstmt = conn.prepareStatement(sql);
+	    			 pstmt.setInt(1, number);
 	    			 return pstmt.executeUpdate();
 	    		}else {
 	    			return 0;
