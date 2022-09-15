@@ -56,7 +56,7 @@
     <main>
        
         <div id="question1">
-            <form method="post" action="action.jsp">
+            <form method="post" action="action.jsp" target="blankIframe" >
                   <label>1. </label>
                   <input type="hidden" name="number" value="1">
                 <input type="radio" name="check" value="1">
@@ -66,7 +66,7 @@
             </form>
         </div>
         <div id="question2">
-            <form method="post" action="action.jsp">
+            <form method="post" action="action.jsp" target="blankIframe">
                   <label>2. </label>  
                   <input type="hidden" name="number" value="2">
                 <input type="radio" name="check" value="1">
@@ -76,7 +76,7 @@
             </form>
         </div>
           <div id="question3">
-            <form method="post" action="action.jsp" >
+            <form method="post" action="action.jsp" target="blankIframe">
                   <label>3. </label>  
                   <input type="hidden" name="number" value="3">
                 <input type="radio" name="check" value="1">
@@ -89,6 +89,7 @@
     <footer>
     <h3> developed by young hwa</h3>
     </footer>
+    <iframe name=blankIframe style='display:none;'></iframe>
 </body>
 
 </html>
