@@ -56,4 +56,20 @@ public class UserDAO {
 	    	}
 	    }
 	    
+	    public int read(int number, int column) {
+	    	try {
+	    		String sql="select * from list WHERE number = ?";
+	    		 pstmt = conn.prepareStatement(sql);
+	             pstmt.setInt(1, number);
+	             rs = pstmt.executeQuery();
+	             if(rs.next()) {
+	            	return rs.getInt(column);
+	             }
+	    	}catch(Exception e) {
+	    		e.printStackTrace();
+	    	}
+	    	return -1;
+	    }
+	  
+	    
 }
