@@ -1,45 +1,58 @@
 @charset "EUC-KR";
+	/* Styling the Body element i.e. Color,
+		Font, Alignment */
+		body {
+			background-color: #05c46b;
+			font-family: Verdana;
+			text-align: center;
+		}
 
-  *{
-   
-/*      box-sizing: border-box; */
-    }
-        html,
-        body {
-            width: 100%;
-            height: 100%;
-        }
+		/* Styling the Form (Color, Padding, Shadow) */
+		form {
+			background-color: #fff;
+			max-width: 500px;
+			margin: 50px auto;
+			padding: 30px 20px;
+			box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.5);
+			text-align: left;
+		}
 
-        header {
-            background: lightgray;
-             text-align: center;
-            height: 10%;
-        }
+		/* Styling form-control Class */
+		
+		/* Styling form-control Label */
+		label {
+			display: block;
+			margin-bottom: 10px;
+		}
 
-        main {
-            background: #f2f4f7;
-            height: 80%;
-        }
+		/* Styling form-control input,
+		select, textarea */
+		 input {
+			border: 1px solid #777;
+			border-radius: 2px;
+			font-family: inherit;
+			padding: 3px;
+			display: block;
+/* 			width: 95%; */
+		}
 
-        footer {
-            background: darkgray;
-             text-align: center;
-            height: 10%;
-        }
+		/* Styling form-control Radio
+		button and Checkbox */
+ input[type="radio"]
+	 {
+			display: inline-block;
+			width: auto;
+		}
 
-        #question1 {
-        width:30%;
-            height: 30%;
-            
-        }
-
-        #question2 {
-            height: 30%;
-        }
-         #question3 {
-            height: 30%;
-        }
-        #blankIframe{
-        	height: 90%;
-        	width: 90%; 
-        }
+		/* Styling Button */
+/* 		button { */
+/* 			background-color: #05c46b; */
+/* 			border: 1px solid #777; */
+/* 			border-radius: 2px; */
+/* 			font-family: inherit; */
+/* 			font-size: 21px; */
+/* 			display: block; */
+/* 			width: 100%; */
+/* 			margin-top: 50px; */
+/* 			margin-bottom: 20px; */
+/* 		} */

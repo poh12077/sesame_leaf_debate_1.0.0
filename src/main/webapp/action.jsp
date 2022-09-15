@@ -24,49 +24,55 @@
 	}
 	%>
 
-     <header>
- <h1>just select</h1>
-    
-    </header>
-    <main>
-            <div id="question1">
-            <form method="post" action="action.jsp"  >
-                  <label>1. pick one please </label><br>
-                  <input type="hidden" name="number" value="1">
-                <input type="radio" name="check" value="1">
-                  <label> one <%=userDAO.read(1,1) %> </label><br>
-                  <input type="radio" name="check" value="2">
-                    <label> two <%=userDAO.read(1,2) %> </label>  <br>
-                <input type="radio" name="check" value="3">
-                  <label> three <%=userDAO.read(1,3) %> </label><br>
-                <input type="submit" value="Submit">
-            </form>
-          
-        </div>
-        <div id="question2">
-            <form method="post" action="action.jsp" target="blankIframe">
-                  <label>2. </label>  
-                  <input type="hidden" name="number" value="2">
-                <input type="radio" name="check" value="1">
-                  <input type="radio" name="check" value="2">  
-                <input type="radio" name="check" value="3">
-                <input type="submit" value="Submit">
-            </form>
-        </div>
-          <div id="question3">
-            <form method="post" action="action.jsp" target="blankIframe">
-                  <label>3. </label>  
-                  <input type="hidden" name="number" value="3">
-                <input type="radio" name="check" value="1">
-                  <input type="radio" name="check" value="2">  
-                <input type="radio" name="check" value="3">
-                <input type="submit" value="Submit">
-            </form>
-        </div>
-    </main>
-    <footer>
-     <iframe id ="blankIframe" name=blankIframe  ></iframe>
-    </footer>
+  <h1>just select</h1> 
+		
+				<form method="post" action="action.jsp">
+					<label>1. pick one please </label>
+					<br>
+					<input type="hidden" name="number" value="1">
+					<label for="check">
+						<input type="radio" id="check" name="check" value="1">one <%=userDAO.read(1,1) %>
+					</label>
+					<label for="check">
+						<input type="radio" id="check" name="check" value="2">two <%=userDAO.read(1,2) %>
+					</label>
+					<label for="check">
+						<input type="radio" id="check" name="check" value="3">three <%=userDAO.read(1,3) %>
+					</label>
+					<input type="submit" value="Submit"> 
+				</form>
+			
+				<form method="post" action="action.jsp">
+					<label>2. pick one please </label>
+					<br>
+					<input type="hidden" name="number" value="2">
+					<label for="check">
+						<input type="radio" id="check" name="check" value="1">one <%=userDAO.read(2,1) %>
+					</label>
+					<label for="check">
+						<input type="radio" id="check" name="check" value="2">two <%=userDAO.read(2,2) %>
+					</label>
+					<label for="check">
+						<input type="radio" id="check" name="check" value="3">three <%=userDAO.read(2,3) %>
+					</label>
+					<input type="submit" value="Submit"> 
+				</form>
+			
+				<form method="post" action="action.jsp">
+					<label>3. pick one please </label>
+					<br>
+					<input type="hidden" name="number" value="3">
+					<label for="check">
+						<input type="radio" id="check" name="check" value="1">one
+					</label>
+					<label for="check">
+						<input type="radio" id="check" name="check" value="2">two</input>
+					</label>
+					<label for="check">
+						<input type="radio" id="check" name="check" value="3">three</input>
+					</label>
+					<input type="submit" value="Submit"> 
+				</form>
             
             
 </body>
