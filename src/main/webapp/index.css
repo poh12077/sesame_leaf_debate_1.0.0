@@ -35,6 +35,11 @@
 			display: block;
 /* 			width: 95%; */
 		}
+		
+		#pie{
+			
+			 border: 1px solid black;
+		}
 
 		/* Styling form-control Radio
 		button and Checkbox */

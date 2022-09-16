@@ -7,7 +7,8 @@
 		<head>
 			<meta charset="utf-8">
 			<meta name="viewport" content="width=device-width, initial-scale=1">
-			<link rel="stylesheet" href="index.css"> </head>
+			<link rel="stylesheet" href="index.css"> 
+			</head>
 
 		<body>
 				<h1>just select</h1> 
@@ -59,6 +60,7 @@
 					</label>
 					<input type="submit" value="Submit"> 
 				</form>
+				 
 		</body>
 
 		</html>
