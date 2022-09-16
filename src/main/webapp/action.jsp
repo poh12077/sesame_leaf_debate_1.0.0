@@ -16,17 +16,29 @@
 </head>
 <body>
 	<%
-	UserDAO userDAO = new UserDAO();
-	int updateResult = userDAO.update(data);
-	if (updateResult == -1) {
-		System.out.println("database update failed");
-	} else {
-		System.out.println("database update succeeded");
-	}
+	
+	  if(session.getAttribute("userID") == null )
+	    {
+	        PrintWriter script = response.getWriter();
+	        script.println("<script>");
+	        script.println("alert('you have to sign in first .')");
+	        script.println("location.href = 'login.jsp'");
+	        script.println("</script>");
+	    }
+	  		UserDAO userDAO= new UserDAO();
+	    	int updateResult = userDAO.update(data);
+	    	if (updateResult == -1) {
+	    		System.out.println("database update failed");
+	    	} else {
+	    		System.out.println("database update succeeded");
+	    	}
+	    
 	%>
 
   <h1>just select</h1> 
-		
+  
+			<a href="logout.jsp" >sign out</a>
+			
 				<form method="post" action="action.jsp">
 					<div class ="pick">
 					<label>1. pick one please </label><br>
@@ -44,7 +56,28 @@
 					<input type="submit" value="Submit"> 
 				</div>
 				<div class ="pieChart" >
-					<canvas id="pie"  ></canvas>
+					<canvas id="pie1"  ></canvas>
+				</div>
+				</form>
+				
+				<form method="post" action="action.jsp">
+					<div class ="pick">
+					<label>2. pick one please </label><br>
+					<input type="hidden" name="number" value="2">
+					<label for="check">
+						<input type="radio" id="check" name="check" value="1">one <%=userDAO.read(2,1) %>
+					</label>
+					
+					<label for="check">
+						<input type="radio" id="check" name="check" value="2">two <%=userDAO.read(2,2) %>
+					</label>
+					<label for="check">
+						<input type="radio" id="check" name="check" value="3">three <%=userDAO.read(2,3) %>
+					</label>
+					<input type="submit" value="Submit"> 
+				</div>
+				<div class ="pieChart" >
+					<canvas id="pie2"  ></canvas>
 				</div>
 				</form>
 			
@@ -81,31 +114,57 @@
 				</form>
 <!--             <script type="text/javascript" src="graph.js"></script> -->
 <script>
-
-var xValues = ["one", "two", "three"];
-var yValues = [<%=userDAO.read(1,1) %>, <%=userDAO.read(1,2) %>, <%=userDAO.read(1,3) %> ];
-var barColors = [
+var xValues1 = ["one", "two", "three"];
+var yValues1 = [<%=userDAO.read(1,1) %>, <%=userDAO.read(1,2) %>, <%=userDAO.read(1,3) %> ];
+var barColors1 = [
   "#b91d47",
   "#00aba9",
   "#2b5797"
 ];
 
-new Chart("pie", {
+new Chart("pie1", {
   type: "pie",
   data: {
-    labels: xValues,
+    labels: xValues1,
     datasets: [{
-      backgroundColor: barColors,
-      data: yValues
+      backgroundColor: barColors1,
+      data: yValues1
     }]
   },
   options: {
     title: {
       display: true,
-      text: "World Wide Wine Production 2018"
+      text: ""
     }
   }
 });
+
+var xValues2 = ["one", "two", "three"];
+var yValues2 = [<%=userDAO.read(2,1) %>, <%=userDAO.read(2,2) %>, <%=userDAO.read(2,3) %> ];
+var barColors2 = [
+  "#b91d47",
+  "#00aba9",
+  "#2b5797"
+];
+
+new Chart("pie2", {
+  type: "pie",
+  data: {
+    labels: xValues2,
+    datasets: [{
+      backgroundColor: barColors2,
+      data: yValues2
+    }]
+  },
+  options: {
+    title: {
+      display: true,
+      text: ""
+    }
+  }
+});
+
+
 
 
 </script>

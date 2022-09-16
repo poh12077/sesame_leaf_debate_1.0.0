@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ page import="java.io.PrintWriter"%>
 	<%@ page import="user.UserDAO"%>
 		<!DOCTYPE html>
 		<html lang="en">
@@ -8,11 +9,26 @@
 			<meta charset="utf-8">
 			<meta name="viewport" content="width=device-width, initial-scale=1">
 			<link rel="stylesheet" href="index.css"> 
+
 			</head>
 
 		<body>
+				<%
+			
+			 	 if(session.getAttribute("userID") == null )
+				    {
+				        PrintWriter script = response.getWriter();
+				        script.println("<script>");
+				        script.println("alert('you have to sign in first .')");
+				        script.println("location.href = 'login.jsp'");
+				        script.println("</script>");
+				    }
+				%>
+	
 				<h1>just select</h1> 
 		
+				<a href="logout.jsp" >sign out</a>
+        
 				<form method="post" action="action.jsp">
 					<label>1. pick one please </label>
 					<br>

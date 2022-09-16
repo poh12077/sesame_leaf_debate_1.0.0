@@ -10,6 +10,8 @@
 		/* Styling the Form (Color, Padding, Shadow) */
 		form {
 			background-color: #fff;
+/* 			width: 50%; */
+/* 			min-width: 300px; */
 			max-width: 500px;
 			margin: 50px auto;
 			padding: 30px 20px;
@@ -38,7 +40,7 @@
 		
 		#pie{
 			
-			 border: 1px solid black;
+/* 			 border: 1px solid black; */
 		}
 
 		/* Styling form-control Radio

@@ -71,5 +71,61 @@ public class UserDAO {
 	    	return -1;
 	    }
 	  
+	    public int join(User user) 
+	    {
+	        String SQL = "INSERT INTO user VALUES (?, ?, ?)";
+	        try {
+	            pstmt = conn.prepareStatement(SQL);
+	            pstmt.setString(1, user.getUserID());
+	            
+//	           password  =  Integer.toString( user.getUserPassword().hashCode() );
+//	           for (int i=0;i<hashing_iteration;i++)
+//	           {
+//	           password = Integer.toString( password.hashCode() );
+//	           }
+	           
+	           pstmt.setString(2, user.getUserPassword() );
+	           pstmt.setString(3, user.getUserGender() );
+	             
+	            return pstmt.executeUpdate();
+	        } catch(Exception e) {
+	            e.printStackTrace();
+	        }
+	        return -1; 
+	    }
+	    
+	    
+	    public int login(String userID, String userPassword) 
+	    {
+	        String SQL = "SELECT * FROM USER WHERE userID = ?";
+	        try 
+	        {
+	            pstmt = conn.prepareStatement(SQL);
+	            pstmt.setString(1, userID);
+	            rs = pstmt.executeQuery();
+	            if(rs.next())
+	            {
+	            	
+//	            	   password = Integer.toString( userPassword.hashCode() );
+//	            	  
+//	            	   for (int i=0;i<hashing_iteration;i++)
+//	            	   {          		   
+//	            	         	   password = Integer.toString( password.hashCode() );
+//	            	   }
+	           
+	            	   if(rs.getString(2).equals(userPassword))
+	                    return 1;   
+	                else
+	                    return 0; 
+	            }
+	            return -1; 
+	            
+	        } catch (Exception e) 
+	        {
+	            e.printStackTrace();
+	        }
+	        return -2; 
+	        
+	    }
 	    
 }
