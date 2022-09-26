@@ -13,6 +13,7 @@
 			</head>
 
 		<body>
+		
 				<%
 			
 			 	 if(session.getAttribute("userID") == null )
@@ -32,50 +33,35 @@
 				<form method="post" action="action.jsp">
 					<label>1. pick one please </label>
 					<br>
-					<input type="hidden" name="number" value="1">
-					<label for="check">
-						<input type="radio" id="check" name="check" value="1">one 
+					<input type="hidden" name="question_number" value="question_one">
+					<label for="check_option">
+						<input type="radio"  name="check_option" value="check_one">check_one 
 					</label>
-					<label for="check">
-						<input type="radio" id="check" name="check" value="2">two</input>
+					<label for="check_option">
+						<input type="radio"  name="check_option" value="check_two">check_two</input>
 					</label>
-					<label for="check">
-						<input type="radio" id="check" name="check" value="3">three</input>
+					<label for="check_option">
+						<input type="radio"  name="check_option" value="check_three">check_three</input>
 					</label>
 					<input type="submit" value="Submit"> 
 				</form>
 			
-				<form method="post" action="action.jsp">
+			<form method="post" action="action.jsp">
 					<label>2. pick one please </label>
 					<br>
-					<input type="hidden" name="number" value="2">
-					<label for="check">
-						<input type="radio" id="check" name="check" value="1">one
+					<input type="hidden" name="question_number" value="question_two">
+					<label for="check_option">
+						<input type="radio"  name="check_option" value="check_one">check_one 
 					</label>
-					<label for="check">
-						<input type="radio" id="check" name="check" value="2">two</input>
+					<label for="check_option">
+						<input type="radio"  name="check_option" value="check_two">check_two</input>
 					</label>
-					<label for="check">
-						<input type="radio" id="check" name="check" value="3">three</input>
+					<label for="check_option">
+						<input type="radio"  name="check_option" value="check_three">check_three</input>
 					</label>
 					<input type="submit" value="Submit"> 
 				</form>
 			
-				<form method="post" action="action.jsp">
-					<label>3. pick one please </label>
-					<br>
-					<input type="hidden" name="number" value="3">
-					<label for="check">
-						<input type="radio" id="check" name="check" value="1">one
-					</label>
-					<label for="check">
-						<input type="radio" id="check" name="check" value="2">two</input>
-					</label>
-					<label for="check">
-						<input type="radio" id="check" name="check" value="3">three</input>
-					</label>
-					<input type="submit" value="Submit"> 
-				</form>
 				 
 		</body>
 

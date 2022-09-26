@@ -4,8 +4,9 @@
 <%@ page import="java.io.PrintWriter"%>
 <%request.setCharacterEncoding("UTF-8");%>
 <jsp:useBean id="data" class="user.Data" scope="page" />
-<jsp:setProperty name="data" property="check" />
-<jsp:setProperty name="data" property="number" />
+<jsp:setProperty name="data" property="check_option" />
+<jsp:setProperty name="data" property="question_number" />
+<jsp:setProperty name="data" property="userID" />
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; c harset=UTF-8">
@@ -24,6 +25,9 @@
 	        script.println("alert('you have to sign in first .')");
 	        script.println("location.href = 'login.jsp'");
 	        script.println("</script>");
+	    }else{
+	    	String userID = session.getAttribute("userID").toString();
+	    	data.setUserID( userID);
 	    }
 	  		UserDAO userDAO= new UserDAO();
 	    	int updateResult = userDAO.update(data);
@@ -41,19 +45,19 @@
 			
 				<form method="post" action="action.jsp">
 					<div class ="pick">
-					<label>1. pick one please </label><br>
-					<input type="hidden" name="number" value="1">
-					<label for="check">
-						<input type="radio" id="check" name="check" value="1">one <%=userDAO.read(1,1) %>
+				<label>1. pick one please </label>
+					<br>
+					<input type="hidden" name="question_number" value="question_one">
+					<label for="check_option">
+						<input type="radio"  name="check_option" value="check_one">check_one 
 					</label>
-					
-					<label for="check">
-						<input type="radio" id="check" name="check" value="2">two <%=userDAO.read(1,2) %>
+					<label for="check_option">
+						<input type="radio"  name="check_option" value="check_two">check_two</input>
 					</label>
-					<label for="check">
-						<input type="radio" id="check" name="check" value="3">three <%=userDAO.read(1,3) %>
+					<label for="check_option">
+						<input type="radio"  name="check_option" value="check_three">check_three</input>
 					</label>
-					<input type="submit" value="Submit"> 
+					<input type="submit" value="Submit">
 				</div>
 				<div class ="pieChart" >
 					<canvas id="pie1"  ></canvas>
@@ -62,60 +66,28 @@
 				
 				<form method="post" action="action.jsp">
 					<div class ="pick">
-					<label>2. pick one please </label><br>
-					<input type="hidden" name="number" value="2">
-					<label for="check">
-						<input type="radio" id="check" name="check" value="1">one <%=userDAO.read(2,1) %>
+				<label>2. pick one please </label>
+					<br>
+					<input type="hidden" name="question_number" value="question_two">
+					<label for="check_option">
+						<input type="radio"  name="check_option" value="check_one">check_one 
 					</label>
-					
-					<label for="check">
-						<input type="radio" id="check" name="check" value="2">two <%=userDAO.read(2,2) %>
+					<label for="check_option">
+						<input type="radio"  name="check_option" value="check_two">check_two</input>
 					</label>
-					<label for="check">
-						<input type="radio" id="check" name="check" value="3">three <%=userDAO.read(2,3) %>
+					<label for="check_option">
+						<input type="radio"  name="check_option" value="check_three">check_three</input>
 					</label>
-					<input type="submit" value="Submit"> 
+					<input type="submit" value="Submit">
 				</div>
 				<div class ="pieChart" >
 					<canvas id="pie2"  ></canvas>
 				</div>
 				</form>
 			
-				<form method="post" action="action.jsp">
-					<label>2. pick one please </label>
-					<br>
-					<input type="hidden" name="number" value="2">
-					<label for="check">
-						<input type="radio" id="check" name="check" value="1">one <%=userDAO.read(2,1) %>
-					</label>
-					<label for="check">
-						<input type="radio" id="check" name="check" value="2">two <%=userDAO.read(2,2) %>
-					</label>
-					<label for="check">
-						<input type="radio" id="check" name="check" value="3">three <%=userDAO.read(2,3) %>
-					</label>
-					<input type="submit" value="Submit"> 
-				</form>
-			
-				<form method="post" action="action.jsp">
-					<label>3. pick one please </label>
-					<br>
-					<input type="hidden" name="number" value="3">
-					<label for="check">
-						<input type="radio" id="check" name="check" value="1">one
-					</label>
-					<label for="check">
-						<input type="radio" id="check" name="check" value="2">two</input>
-					</label>
-					<label for="check">
-						<input type="radio" id="check" name="check" value="3">three</input>
-					</label>
-					<input type="submit" value="Submit"> 
-				</form>
-<!--             <script type="text/javascript" src="graph.js"></script> -->
 <script>
-var xValues1 = ["one", "two", "three"];
-var yValues1 = [<%=userDAO.read(1,1) %>, <%=userDAO.read(1,2) %>, <%=userDAO.read(1,3) %> ];
+var xValues1 = ["check_one", "check_two", "check_three"];
+var yValues1 = [<%=userDAO.read("question_one","check_one") %>, <%=userDAO.read("question_one","check_two") %>, <%=userDAO.read("question_one","check_three") %> ];
 var barColors1 = [
   "#b91d47",
   "#00aba9",
@@ -139,8 +111,8 @@ new Chart("pie1", {
   }
 });
 
-var xValues2 = ["one", "two", "three"];
-var yValues2 = [<%=userDAO.read(2,1) %>, <%=userDAO.read(2,2) %>, <%=userDAO.read(2,3) %> ];
+var xValues2 = ["check_one", "check_two", "check_three"];
+var yValues2 = [<%=userDAO.read("question_two","check_one") %>, <%=userDAO.read("question_two","check_two") %>, <%=userDAO.read("question_two","check_three") %> ];
 var barColors2 = [
   "#b91d47",
   "#00aba9",

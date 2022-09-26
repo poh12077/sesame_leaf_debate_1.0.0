@@ -25,26 +25,55 @@ public class UserDAO {
 			}
 		}
 	    
+	    public void updateCheck(Data data) {
+	    	try {
+	    		String check_option = data.getCheck_option();
+	    		String question_number = data.getQuestion_number();
+	    		String sql=null;
+	    		String userID=data.getUserID();
+	    		
+	    		if(question_number.equals("question_one") ) {
+	    			sql = "update user set question_one = ? where userID = ?";
+		    		pstmt = conn.prepareStatement(sql);
+		    		 pstmt.setString(1, check_option);
+		    		 pstmt.setString(2, userID);
+		    		 pstmt.executeUpdate();
+	    		}else if(question_number.equals("question_two") ){
+	    			sql = "update user set question_two = ? where userID = ?";
+		    		pstmt = conn.prepareStatement(sql);
+		    		 pstmt.setString(1, check_option);
+		    		 pstmt.setString(2, userID);
+		    		 pstmt.executeUpdate();
+	    		}
+	    		
+	    	}catch(Exception e) {
+	    		e.printStackTrace();
+	    	}
+	    }
+	    
+	    
 	    public int update(Data data) {
 	    	try {
-	    		String check = data.getCheck();
-	    		int number = data.getNumber();
+	    		updateCheck(data);
+	    		
+	    		String check_option = data.getCheck_option();
+	    		String question_number = data.getQuestion_number();
 	    		String sql=null;
 	              
-	    		if(check.equals("1")) {
-	    			sql = "update list set one = one + 1 where number = ?";
+	    		if(check_option.equals("check_one")) {
+	    			sql = "update check_result set check_one = check_one + 1 where question_number = ?";
 	    			 pstmt = conn.prepareStatement(sql);
-	    			 pstmt.setInt(1, number);
+	    			 pstmt.setString(1, question_number);
 	    	          return pstmt.executeUpdate();
-	    		}else if(check.equals("2")) {
-	    			sql = "update list set two = two + 1 where number = ?";
+	    		}else if(check_option.equals("check_two")) {
+	    			sql = "update check_result set check_two = check_two + 1 where question_number = ?";
 	    			 pstmt = conn.prepareStatement(sql);
-	    			 pstmt.setInt(1, number);
+	    			 pstmt.setString(1, question_number);
 	    			 return	pstmt.executeUpdate();
-	    		}else if(check.equals("3")) {
-	    			sql = "update list set three = three + 1 where number = ?";
+	    		}else if(check_option.equals("check_three")) {
+	    			sql = "update check_result set check_three = check_three + 1 where question_number = ?";
 	    			 pstmt = conn.prepareStatement(sql);
-	    			 pstmt.setInt(1, number);
+	    			 pstmt.setString(1, question_number);
 	    			 return pstmt.executeUpdate();
 	    		}else {
 	    			return 0;
@@ -56,14 +85,14 @@ public class UserDAO {
 	    	}
 	    }
 	    
-	    public int read(int number, int column) {
+	    public int read(String question_number, String check_option) {
 	    	try {
-	    		String sql="select * from list WHERE number = ?";
+	    		String sql="select * from check_result WHERE question_number = ?";
 	    		 pstmt = conn.prepareStatement(sql);
-	             pstmt.setInt(1, number);
+	    		 pstmt.setString(1, question_number);
 	             rs = pstmt.executeQuery();
 	             if(rs.next()) {
-	            	return rs.getInt(column);
+	            	return rs.getInt(check_option);
 	             }
 	    	}catch(Exception e) {
 	    		e.printStackTrace();
