@@ -7,9 +7,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
  
 public class UserDAO {
-	 private Connection conn;            // DB�� �����ϴ� ��ü
-	    private PreparedStatement pstmt;    // 
-	    private ResultSet rs;                // DB data�� ���� �� �ִ� ��ü  (Ctrl + shift + 'o') -> auto import
+	 private Connection conn;            
+	    private PreparedStatement pstmt;    
+	    private ResultSet rs;                
 	    String password;
 	   
 	    public UserDAO()
@@ -26,65 +26,26 @@ public class UserDAO {
 			}
 		}
 	    
-	    public void updateCheck(Data data) {
-	    	try {
+	    public void update_check_option_in_user (Data data) throws Exception {
 	    		String check_option = data.getCheck_option();
 	    		String question_number = data.getQuestion_number();
-	    		String sql=null;
 	    		String userID=data.getUserID();
-	    		
-	    		if(question_number.equals("question_one") ) {
-	    			sql = "update user set question_one = ? where userID = ?";
-		    		pstmt = conn.prepareStatement(sql);
-		    		 pstmt.setString(1, check_option);
-		    		 pstmt.setString(2, userID);
-		    		 pstmt.executeUpdate();
-	    		}else if(question_number.equals("question_two") ){
-	    			sql = "update user set question_two = ? where userID = ?";
-		    		pstmt = conn.prepareStatement(sql);
-		    		 pstmt.setString(1, check_option);
-		    		 pstmt.setString(2, userID);
-		    		 pstmt.executeUpdate();
-	    		}
-	    		
-	    	}catch(Exception e) {
-	    		e.printStackTrace();
-	    	}
+	    		String sql="update user set "+question_number+" = ? where userID = ?";
+	    		pstmt = conn.prepareStatement(sql);
+	    		 pstmt.setString(1, check_option);
+	    		 pstmt.setString(2, userID);
+	    		 pstmt.executeUpdate();
 	    }
 	    
-	   
-	    
-	    public int update(Data data) {
-	    	try {
-	    		updateCheck(data);
+	    public int update(Data data) throws Exception {
+	    		update_check_option_in_user(data);
 	    		
 	    		String check_option = data.getCheck_option();
 	    		String question_number = data.getQuestion_number();
-	    		String sql=null;
-	    		
-	    		if(check_option.equals("check_one")) {
-	    			sql = "update check_result set check_one = check_one + 1 where question_number = ?";
-	    			 pstmt = conn.prepareStatement(sql);
-	    			 pstmt.setString(1, question_number);
-	    	          return pstmt.executeUpdate();
-	    		}else if(check_option.equals("check_two")) {
-	    			sql = "update check_result set check_two = check_two + 1 where question_number = ?";
-	    			 pstmt = conn.prepareStatement(sql);
-	    			 pstmt.setString(1, question_number);
-	    			 return	pstmt.executeUpdate();
-	    		}else if(check_option.equals("check_three")) {
-	    			sql = "update check_result set check_three = check_three + 1 where question_number = ?";
-	    			 pstmt = conn.prepareStatement(sql);
-	    			 pstmt.setString(1, question_number);
-	    			 return pstmt.executeUpdate();
-	    		}else {
-	    			return 0;
-	    		}
-	    		
-	    	}catch(Exception e) {
-	    		e.printStackTrace();
-	    		return -1;
-	    	}
+	    		String sql="update check_result set "+check_option+" = "+check_option+" + 1 where question_number = ?";
+   			 	pstmt = conn.prepareStatement(sql);
+   			 	pstmt.setString(1, question_number);
+   			 	return pstmt.executeUpdate();
 	    }
 	    
 	    
@@ -103,54 +64,27 @@ public class UserDAO {
 	    	return -1;
 	    }
 
-	    public String test() {
-	    	return "test";
-	    }
-	    
-	    public int read_check_option(String question_number, String userID) {
+	
+	    public String read_check_option_in_user(String question_number, String userID) {
 	    	try {
-		    	if(question_number == "question_one" ) {
-		    		String sql="select question_one from user WHERE userID = ?";
-		    		 pstmt = conn.prepareStatement(sql);
-		    		 pstmt.setString(1, userID);
-		             rs = pstmt.executeQuery();
-		             if(rs.next()) {
-		            	 String check_option = rs.getString("question_one");
-		            	 if(check_option.equals("check_one") ) {
-		            		 return 11;
-		            	 }else if (check_option.equals("check_two")) {
-		            		 return 12;
-		            	 }else if (check_option.equals("check_three")) {
-		            		 return 13;
-		            	 }else if (check_option==null) {
-		            		 return 10;
-		            	 }
-		             }
-		    	}else if (question_number == "question_two") {
-		    		String sql="select question_two from user WHERE userID = ?";
-		    		 pstmt = conn.prepareStatement(sql);
-		    		 pstmt.setString(1, userID);
-		             rs = pstmt.executeQuery();
-		             if(rs.next()) {
-		            	 String check_option = rs.getString("question_two");
-		            	 if(check_option=="check_one") {
-		            		 return 21;
-		            	 }else if (check_option=="check_two") {
-		            		 return 22;
-		            	 }else if (check_option=="check_three") {
-		            		 return 23;
-		            	 }else if (check_option==null) {
-		            		 return 20;
-		            	 }
-		             }
-		    	}
-	    		
+	    		String sql = "select "+question_number+" from user WHERE userID = ?";
+	    		 pstmt = conn.prepareStatement(sql);
+	    		 pstmt.setString(1, userID);
+	             rs = pstmt.executeQuery();
+	             if(rs.next()) {
+	            	 String check_option = rs.getString(question_number);
+	            	 if(check_option==null) {
+	            		 return question_number+"_null";
+	            	 }else {
+	            		 return question_number+"_"+check_option;
+	            	 }
+	             }
 	    	}catch(Exception e) {
 	    		e.printStackTrace();
 	    	}
-	    	return -1;
+	    	return "error";
 	    }
-
+	    
 	    
 	    public int join(User user) 
 	    {

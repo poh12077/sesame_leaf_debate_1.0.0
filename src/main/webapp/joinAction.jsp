@@ -30,7 +30,7 @@
         	session.setAttribute("userID", user.getUserID()  );
         	PrintWriter script = response.getWriter();
             script.println("<script>");
-            script.println("location.href = 'index.jsp'");
+            script.println("location.href = 'action.jsp'");
             script.println("</script>");
         }
       

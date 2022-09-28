@@ -17,26 +17,28 @@
 </head>
 <body>
 	<%
-	
-	  if(session.getAttribute("userID") == null )
-	    {
-	        PrintWriter script = response.getWriter();
-	        script.println("<script>");
-	        script.println("alert('you have to sign in first .')");
-	        script.println("location.href = 'login.jsp'");
-	        script.println("</script>");
-	    }else{
-	    	String userID = session.getAttribute("userID").toString();
-	    	data.setUserID( userID);
-	    }
-	  		UserDAO userDAO= new UserDAO();
-	    	int updateResult = userDAO.update(data);
-	    	if (updateResult == -1) {
-	    		System.out.println("database update failed");
-	    	} else {
-	    		System.out.println("database update succeeded");
-	    	}
-	    
+	UserDAO userDAO = new UserDAO();
+	try {
+		if (session.getAttribute("userID") == null) {
+			PrintWriter script = response.getWriter();
+			script.println("<script>");
+			script.println("alert('you have to sign in first .')");
+			script.println("location.href = 'login.jsp'");
+			script.println("</script>");
+		} else {
+			String userID = session.getAttribute("userID").toString();
+			data.setUserID(userID);
+		}
+
+		int updateResult = userDAO.update(data);
+		if (updateResult >= -1) {
+			System.out.println("database update succeeded");
+		}
+
+	} catch (Exception e) {
+		System.out.println("database update failed");
+		e.printStackTrace();
+	}
 	%>
 
   <h1>just select</h1> 
@@ -70,13 +72,13 @@
 						<fieldset>
 							<legend>2. pick one please</legend>
 							<input type="hidden" name="question_number" value="question_two">
-							<input type="radio" name="check_option" value="check_one">
+							<input type="radio" id="question_two_check_one" name="check_option" value="check_one">
 							<label for="check_option"> check_one </label>
 							<br>
-							<input type="radio" name="check_option" value="check_two">
+							<input type="radio" id="question_two_check_two" name="check_option" value="check_two">
 							<label for="check_option"> check_two </label>
 							<br>
-							<input type="radio" name="check_option" value="check_three">
+							<input type="radio" id="question_two_check_three" name="check_option" value="check_three">
 							<label for="check_option"> check_three </label>
 							<br>
 							<input type="submit" value="Submit"> 
@@ -88,34 +90,19 @@
 				</form>
 			
 <script>
-	let t;
-	try{
-		t = "<%= userDAO.test() %>";
-			
-	}catch(e){
-		console.log(e);
-	}
 	
-	if(t=="test"){
-		console.log("test");
-	}else{
-		console.log("ss");
-	}
-	
- let check = (question_id_check_option) => {
-	 if(question_id_check_option%10 !=0){
-		 if(question_id_check_option==11){
-			 document.getElementById("question_one_check_one").checked = true;	 
-		 }else if(question_id_check_option==12){
-			 document.getElementById("question_one_check_two").checked = true;	 
-		 }else if (question_id_check_option==13){
-			 document.getElementById("question_one_check_three").checked = true;	 
-		 }
+ let check = (question_number_check_option) => {
+	 let null_check = question_number_check_option.split("_")[2];
+	 if( null_check!="null"){
+		 document.getElementById(question_number_check_option).checked = true;
 	 }
 	} 
+ 
+let question_number_check_option = "<%= userDAO.read_check_option_in_user("question_one", data.getUserID()) %>";
+check(question_number_check_option);
 
-let question_id_check_option = <%= userDAO.read_check_option("question_one", data.getUserID())  %>;
-check(question_id_check_option);
+question_number_check_option = "<%= userDAO.read_check_option_in_user("question_two", data.getUserID()) %>";
+check(question_number_check_option);
 
  var xValues1 = ["check_one", "check_two", "check_three"];
 var yValues1 = [<%=userDAO.read("question_one","check_one") %>, <%=userDAO.read("question_one","check_two") %>, <%=userDAO.read("question_one","check_three") %> ];
