@@ -42,22 +42,23 @@
   <h1>just select</h1> 
   
 			<a href="logout.jsp" >sign out</a>
-			
+		
 				<form method="post" action="action.jsp">
 					<div class ="pick">
-				<label>1. pick one please </label>
-					<br>
-					<input type="hidden" name="question_number" value="question_one">
-					<label for="check_option">
-						<input type="radio"  name="check_option" value="check_one">check_one 
-					</label>
-					<label for="check_option">
-						<input type="radio"  name="check_option" value="check_two">check_two</input>
-					</label>
-					<label for="check_option">
-						<input type="radio"  name="check_option" value="check_three">check_three</input>
-					</label>
-					<input type="submit" value="Submit">
+					<fieldset>
+							<legend>1. pick one please</legend>
+							<input type="hidden" name="question_number" value="question_one">
+							<input type="radio" id="question_one_check_one" name="check_option" value="check_one" >
+							<label for="check_option"> check_one </label>
+							<br>
+							<input type="radio" id="question_one_check_two" name="check_option" value="check_two">
+							<label for="check_option"> check_two </label>
+							<br>
+							<input type="radio" id="question_one_check_three" name="check_option" value="check_three">
+							<label for="check_option"> check_three </label>
+							<br>
+							<input type="submit" value="Submit"> 
+						</fieldset>
 				</div>
 				<div class ="pieChart" >
 					<canvas id="pie1"  ></canvas>
@@ -66,19 +67,20 @@
 				
 				<form method="post" action="action.jsp">
 					<div class ="pick">
-				<label>2. pick one please </label>
-					<br>
-					<input type="hidden" name="question_number" value="question_two">
-					<label for="check_option">
-						<input type="radio"  name="check_option" value="check_one">check_one 
-					</label>
-					<label for="check_option">
-						<input type="radio"  name="check_option" value="check_two">check_two</input>
-					</label>
-					<label for="check_option">
-						<input type="radio"  name="check_option" value="check_three">check_three</input>
-					</label>
-					<input type="submit" value="Submit">
+						<fieldset>
+							<legend>2. pick one please</legend>
+							<input type="hidden" name="question_number" value="question_two">
+							<input type="radio" name="check_option" value="check_one">
+							<label for="check_option"> check_one </label>
+							<br>
+							<input type="radio" name="check_option" value="check_two">
+							<label for="check_option"> check_two </label>
+							<br>
+							<input type="radio" name="check_option" value="check_three">
+							<label for="check_option"> check_three </label>
+							<br>
+							<input type="submit" value="Submit"> 
+						</fieldset>
 				</div>
 				<div class ="pieChart" >
 					<canvas id="pie2"  ></canvas>
@@ -86,7 +88,36 @@
 				</form>
 			
 <script>
-var xValues1 = ["check_one", "check_two", "check_three"];
+	let t;
+	try{
+		t = "<%= userDAO.test() %>";
+			
+	}catch(e){
+		console.log(e);
+	}
+	
+	if(t=="test"){
+		console.log("test");
+	}else{
+		console.log("ss");
+	}
+	
+ let check = (question_id_check_option) => {
+	 if(question_id_check_option%10 !=0){
+		 if(question_id_check_option==11){
+			 document.getElementById("question_one_check_one").checked = true;	 
+		 }else if(question_id_check_option==12){
+			 document.getElementById("question_one_check_two").checked = true;	 
+		 }else if (question_id_check_option==13){
+			 document.getElementById("question_one_check_three").checked = true;	 
+		 }
+	 }
+	} 
+
+let question_id_check_option = <%= userDAO.read_check_option("question_one", data.getUserID())  %>;
+check(question_id_check_option);
+
+ var xValues1 = ["check_one", "check_two", "check_three"];
 var yValues1 = [<%=userDAO.read("question_one","check_one") %>, <%=userDAO.read("question_one","check_two") %>, <%=userDAO.read("question_one","check_three") %> ];
 var barColors1 = [
   "#b91d47",

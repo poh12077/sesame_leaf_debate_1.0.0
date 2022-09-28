@@ -1,5 +1,6 @@
 package user;
 
+import java.io.StringReader;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -51,6 +52,7 @@ public class UserDAO {
 	    	}
 	    }
 	    
+	   
 	    
 	    public int update(Data data) {
 	    	try {
@@ -59,7 +61,7 @@ public class UserDAO {
 	    		String check_option = data.getCheck_option();
 	    		String question_number = data.getQuestion_number();
 	    		String sql=null;
-	              
+	    		
 	    		if(check_option.equals("check_one")) {
 	    			sql = "update check_result set check_one = check_one + 1 where question_number = ?";
 	    			 pstmt = conn.prepareStatement(sql);
@@ -85,6 +87,7 @@ public class UserDAO {
 	    	}
 	    }
 	    
+	    
 	    public int read(String question_number, String check_option) {
 	    	try {
 	    		String sql="select * from check_result WHERE question_number = ?";
@@ -99,10 +102,59 @@ public class UserDAO {
 	    	}
 	    	return -1;
 	    }
-	  
+
+	    public String test() {
+	    	return "test";
+	    }
+	    
+	    public int read_check_option(String question_number, String userID) {
+	    	try {
+		    	if(question_number == "question_one" ) {
+		    		String sql="select question_one from user WHERE userID = ?";
+		    		 pstmt = conn.prepareStatement(sql);
+		    		 pstmt.setString(1, userID);
+		             rs = pstmt.executeQuery();
+		             if(rs.next()) {
+		            	 String check_option = rs.getString("question_one");
+		            	 if(check_option.equals("check_one") ) {
+		            		 return 11;
+		            	 }else if (check_option.equals("check_two")) {
+		            		 return 12;
+		            	 }else if (check_option.equals("check_three")) {
+		            		 return 13;
+		            	 }else if (check_option==null) {
+		            		 return 10;
+		            	 }
+		             }
+		    	}else if (question_number == "question_two") {
+		    		String sql="select question_two from user WHERE userID = ?";
+		    		 pstmt = conn.prepareStatement(sql);
+		    		 pstmt.setString(1, userID);
+		             rs = pstmt.executeQuery();
+		             if(rs.next()) {
+		            	 String check_option = rs.getString("question_two");
+		            	 if(check_option=="check_one") {
+		            		 return 21;
+		            	 }else if (check_option=="check_two") {
+		            		 return 22;
+		            	 }else if (check_option=="check_three") {
+		            		 return 23;
+		            	 }else if (check_option==null) {
+		            		 return 20;
+		            	 }
+		             }
+		    	}
+	    		
+	    	}catch(Exception e) {
+	    		e.printStackTrace();
+	    	}
+	    	return -1;
+	    }
+
+	    
 	    public int join(User user) 
 	    {
-	        String SQL = "INSERT INTO user VALUES (?, ?, ?)";
+	        String SQL = "INSERT INTO user (userID, userPassword, userGender) VALUES (?, ?, ?)";
 	        try {
 	            pstmt = conn.prepareStatement(SQL);
 	            pstmt.setString(1, user.getUserID());

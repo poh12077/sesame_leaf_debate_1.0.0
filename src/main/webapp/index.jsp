@@ -1,19 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	<%@ page import="java.io.PrintWriter"%>
-	<%@ page import="user.UserDAO"%>
-		<!DOCTYPE html>
-		<html lang="en">
+		<%@ page import="user.UserDAO"%>
+			<!DOCTYPE html>
+			<html lang="en">
 
-		<head>
-			<meta charset="utf-8">
-			<meta name="viewport" content="width=device-width, initial-scale=1">
-			<link rel="stylesheet" href="index.css"> 
+			<head>
+				<meta charset="utf-8">
+				<meta name="viewport" content="width=device-width, initial-scale=1">
+				<link rel="stylesheet" href="index.css"> </head>
 
-			</head>
-
-		<body>
-		
+			<body>
 				<%
 			
 			 	 if(session.getAttribute("userID") == null )
@@ -25,44 +22,40 @@
 				        script.println("</script>");
 				    }
 				%>
-	
-				<h1>just select</h1> 
-		
-				<a href="logout.jsp" >sign out</a>
-        
-				<form method="post" action="action.jsp">
-					<label>1. pick one please </label>
-					<br>
-					<input type="hidden" name="question_number" value="question_one">
-					<label for="check_option">
-						<input type="radio"  name="check_option" value="check_one">check_one 
-					</label>
-					<label for="check_option">
-						<input type="radio"  name="check_option" value="check_two">check_two</input>
-					</label>
-					<label for="check_option">
-						<input type="radio"  name="check_option" value="check_three">check_three</input>
-					</label>
-					<input type="submit" value="Submit"> 
-				</form>
-			
-			<form method="post" action="action.jsp">
-					<label>2. pick one please </label>
-					<br>
-					<input type="hidden" name="question_number" value="question_two">
-					<label for="check_option">
-						<input type="radio"  name="check_option" value="check_one">check_one 
-					</label>
-					<label for="check_option">
-						<input type="radio"  name="check_option" value="check_two">check_two</input>
-					</label>
-					<label for="check_option">
-						<input type="radio"  name="check_option" value="check_three">check_three</input>
-					</label>
-					<input type="submit" value="Submit"> 
-				</form>
-			
-				 
-		</body>
+					<h1>just select</h1> <a href="logout.jsp">sign out</a>
+					<form method="post" action="action.jsp">
+						<fieldset>
+							<legend>1. pick one please</legend>
+							<input type="hidden" name="question_number" value="question_one">
+							<input type="radio" name="check_option" value="check_one">
+							<label for="check_option"> check_one </label>
+							<br>
+							<input type="radio" name="check_option" value="check_two">
+							<label for="check_option"> check_two </label>
+							<br>
+							<input type="radio" name="check_option" value="check_three">
+							<label for="check_option"> check_three </label>
+							<br>
+							<input type="submit" value="Submit"> 
+						</fieldset>
+					</form>
+						
+					<form method="post" action="action.jsp">
+						<fieldset>
+							<legend>2. pick one please</legend>
+							<input type="hidden" name="question_number" value="question_two">
+							<input type="radio" name="check_option" value="check_one">
+							<label for="check_option"> check_one </label>
+							<br>
+							<input type="radio" name="check_option" value="check_two">
+							<label for="check_option"> check_two </label>
+							<br>
+							<input type="radio" name="check_option" value="check_three">
+							<label for="check_option"> check_three </label>
+							<br>
+							<input type="submit" value="Submit"> 
+						</fieldset>
+					</form>
+			</body>
 
-		</html>
+			</html>
