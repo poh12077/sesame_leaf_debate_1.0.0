@@ -12,10 +12,16 @@
 <meta http-equiv="Content-Type" content="text/html; c harset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.4.0/dist/chartjs-plugin-datalabels.min.js"></script> 
+  
   	 <link rel="stylesheet" href="index.css">
 <title>practice</title>
 </head>
 <body>
+
+<script src="chartjs-plugin-doughnutlabel.js"></script>
+
+
 	<%
 	UserDAO userDAO = new UserDAO();
 	try {
@@ -62,8 +68,8 @@
 							<input type="submit" value="Submit"> 
 						</fieldset>
 				</div>
-				<div class ="pieChart" >
-					<canvas id="pie1"  ></canvas>
+				<div class ="doughnutChart" >
+					<canvas id="doughnut1"  ></canvas>
 				</div>
 				</form>
 				
@@ -84,8 +90,8 @@
 							<input type="submit" value="Submit"> 
 						</fieldset>
 				</div>
-				<div class ="pieChart" >
-					<canvas id="pie2"  ></canvas>
+				<div class ="doughnutChart" >
+					<canvas id="doughnut2"  ></canvas>
 				</div>
 				</form>
 			
@@ -104,7 +110,7 @@ check(question_number_check_option);
 question_number_check_option = "<%= userDAO.read_check_option_in_user("question_two", data.getUserID()) %>";
 check(question_number_check_option);
 
- var xValues1 = ["check_one", "check_two", "check_three"];
+var xValues1 = ["check_one", "check_two", "check_three"];
 var yValues1 = [<%=userDAO.read("question_one","check_one") %>, <%=userDAO.read("question_one","check_two") %>, <%=userDAO.read("question_one","check_three") %> ];
 var barColors1 = [
   "#b91d47",
@@ -112,21 +118,56 @@ var barColors1 = [
   "#2b5797"
 ];
 
-new Chart("pie1", {
-  type: "pie",
-  data: {
-    labels: xValues1,
-    datasets: [{
-      backgroundColor: barColors1,
-      data: yValues1
-    }]
-  },
-  options: {
-    title: {
-      display: true,
-      text: ""
+let question_1_total_respondent_number = yValues1.reduce((partialSum, a) => partialSum + a, 0);
+var ctx = document.getElementById("doughnut1").getContext('2d');
+
+new Chart("doughnut1", {
+    type: "doughnut",
+    data: {
+        labels: xValues1,
+        datasets: [{
+            backgroundColor: barColors1,
+            data: yValues1
+        }]
+    },
+    options: {
+        plugins: {
+            datalabels: {
+                display: true,
+                backgroundColor: '#ccc',
+                borderRadius: 3,
+                font: {
+                    color: 'red',
+                    weight: 'bold',
+                }, 
+                formatter: (value, ctx) => {
+                    let datasets = ctx.chart.data.datasets;
+                    if (datasets.indexOf(ctx.dataset) === datasets.length - 1) {
+                      let sum = datasets[0].data.reduce((a, b) => a + b, 0);
+                      let percentage = Math.round((value / sum) * 100) + '%';
+                      return percentage;
+                    } else {
+                      return percentage;
+                    }
+                  }
+            },
+            doughnutlabel: {
+                labels: [{
+                    text: question_1_total_respondent_number,
+                    font: {
+                        size: 20,
+                        weight: 'bold'
+                    }
+                }, {
+                    text: "total"
+                }]
+            }
+        },
+        title: {
+            display: false,
+            text: "test"
+        }
     }
-  }
 });
 
 var xValues2 = ["check_one", "check_two", "check_three"];
@@ -137,28 +178,61 @@ var barColors2 = [
   "#2b5797"
 ];
 
-new Chart("pie2", {
-  type: "pie",
-  data: {
-    labels: xValues2,
-    datasets: [{
-      backgroundColor: barColors2,
-      data: yValues2
-    }]
-  },
-  options: {
-    title: {
-      display: true,
-      text: ""
+
+let question_2_total_respondent_number = yValues2.reduce((partialSum, a) => partialSum + a, 0);
+ctx = document.getElementById("doughnut2").getContext('2d');
+new Chart("doughnut2", {
+    type: "doughnut",
+    data: {
+        labels: xValues2,
+        datasets: [{
+            backgroundColor: barColors2,
+            data: yValues2
+        }]
+    },
+    options: {
+        plugins: {
+            datalabels: {
+                display: true,
+                backgroundColor: '#ccc',
+                borderRadius: 3,
+                font: {
+                    color: 'red',
+                    weight: 'bold',
+                }, 
+                formatter: (value, ctx) => {
+                    let datasets = ctx.chart.data.datasets;
+                    if (datasets.indexOf(ctx.dataset) === datasets.length - 1) {
+                      let sum = datasets[0].data.reduce((a, b) => a + b, 0);
+                      let percentage = Math.round((value / sum) * 100) + '%';
+                      return percentage;
+                    } else {
+                      return percentage;
+                    }
+                  }
+            },
+            doughnutlabel: {
+                labels: [{
+                    text: question_2_total_respondent_number,
+                    font: {
+                        size: 20,
+                        weight: 'bold'
+                    }
+                }, {
+                    text: "total"
+                }]
+            }
+        },
+        title: {
+            display: false,
+            text: "test"
+        }
     }
-  }
 });
-
-
 
 
 </script>
 				
-            
+              
 </body>
 </html>

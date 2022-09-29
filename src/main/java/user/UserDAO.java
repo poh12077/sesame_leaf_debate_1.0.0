@@ -40,13 +40,13 @@ public class UserDAO {
 		String question_number = data.getQuestion_number();
 		String sql = null;
 		String previous_check_option = read_only_check_option_in_user(question_number, data.getUserID());
-
-		sql = "update check_result set " + previous_check_option + " = " + previous_check_option
-				+ " - 1 where question_number = ?";
-		pstmt = conn.prepareStatement(sql);
-		pstmt.setString(1, question_number);
-		pstmt.executeUpdate();
-
+		if(previous_check_option!=null) {
+			sql = "update check_result set " + previous_check_option + " = " + previous_check_option
+					+ " - 1 where question_number = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, question_number);
+			pstmt.executeUpdate();
+		}
 		update_check_option_in_user(data);
 
 		String new_check_option = data.getCheck_option();
