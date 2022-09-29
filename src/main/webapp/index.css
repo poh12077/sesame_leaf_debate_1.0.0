@@ -30,3 +30,9 @@
 		    margin-left: 5px;
 		}
 	
+		    #doughnut{
+      		 width: 500px;
+        	 height: 280px;
+            border: 0px;
+/*             background-color:Tomato; */
+        }
