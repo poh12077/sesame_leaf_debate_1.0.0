@@ -14,7 +14,7 @@
 <meta http-equiv="Content-Type" content="text/html; c harset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
-<!--    <link rel="stylesheet" href="index.css"> -->
+   <link rel="stylesheet" href="doughnut_chart.css">
 </head>
 <body>
 <%
@@ -42,8 +42,7 @@
 	}
 	%>
 
-	<canvas id="doughnut1"></canvas>
-
+	<canvas id="canvas_doughnut"  width=300 height=300 ></canvas>
 	<script src="chartjs-plugin-doughnutlabel.js"></script>
 <script src="chartjs-plugin-doughnutlabel.min.js"></script>
 
@@ -53,15 +52,15 @@
 var xValues1 = ["check_one", "check_two", "check_three"];
 var yValues1 = [<%=userDAO.read(data.getQuestion_number(),"check_one") %>, <%=userDAO.read(data.getQuestion_number(),"check_two") %>, <%=userDAO.read(data.getQuestion_number(),"check_three") %> ];
 var barColors1 = [
-  "#b91d47",
-  "#00aba9",
-  "#2b5797"
+  "#ff0000",
+  "#ff8000",
+  "#ffff00"
 ];
 
 let total_respondent_number = yValues1.reduce((partialSum, a) => partialSum + a, 0);
-var ctx = document.getElementById("doughnut1").getContext('2d');
+var ctx = document.getElementById("canvas_doughnut").getContext('2d');
 
-new Chart("doughnut1", {
+new Chart("canvas_doughnut", {
     type: "doughnut",
     data: {
         labels: xValues1,
@@ -106,7 +105,17 @@ new Chart("doughnut1", {
         title: {
             display: false,
             text: "test"
-        }
+        },
+        legend: {
+            display: false
+        },
+        tooltips: {
+            enabled: true
+         },
+        layout: {
+            padding: 0
+        },
+        responsive: false
     }
 });
 
