@@ -7,30 +7,35 @@
         <!-- 반응형 웹에 사용하는 메타태그 -->
         <link rel="stylesheet" href="css/bootstrap.css" />
         <title>Just Pick</title>
-        <style>
-		body {
-			background-color: #05c46b;
-		}
-		
-		button {
-			margin: 7px;
-			float: right;
-			color: black;
-			text-align: center;
-			padding: 7px 7px;
-			 font-size: 16px;
-		}
-		
-		#div_menu {
-			color: #05c46b;
-			height: 70px;
-		}
-		</style>
     </head>
     <body>
-  		<div id="div_menu">
-			<button type="button" onclick="location.href='login.jsp'">sign in</button>
-		</div>
+        <nav class="navbar navbar-default">
+            <div class="navbar-header">
+                <!-- 홈페이지의 로고 -->
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expand="false">
+                    <span class="icon-bar"></span>
+                    <!-- 줄였을때 옆에 짝대기 -->
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="main.jsp">link 3</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="main.jsp">link 1</a></li>
+                    <li><a href="bbs.jsp">link 2</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">menu<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li class="active"><a href="login.jsp">sign in</a></li>
+                            <li><a href="join.jsp">sign up</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
         <div class="container">
             <div class="col-lg-4"></div>
             <div class="col-lg-4">

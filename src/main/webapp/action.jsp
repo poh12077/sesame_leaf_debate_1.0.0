@@ -32,10 +32,11 @@
 	%>
 	
 	
-  <h1>just select</h1> 
-  
-			<a href="logout.jsp" >sign out</a>
-		
+
+		<div id="div_menu">
+		<button type="button" onclick="location.href='developer_page.jsp'">developed by</button>
+			<button type="button" onclick="location.href='logout.jsp'">sign out</button>
+		</div>
 				<form method="post" action="doughnut_chart.jsp" target="question_1_doughnut" >
 					<div class ="pick">
 					<fieldset>
