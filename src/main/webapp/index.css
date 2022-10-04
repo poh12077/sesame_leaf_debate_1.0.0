@@ -5,6 +5,7 @@
 			background-color: #05c46b;
 			font-family: Verdana;
 			text-align: center;
+			width:100%;
 		}
 	
 		button {
@@ -17,14 +18,16 @@
 		}
 		
 		#div_menu {
-			color: #05c46b;
+			background-color: #05c46b;
+			max-width: 500px;
 			height: 30px;
+			margin-left:auto;
+ 			margin-right:auto;
 		}
 		
-		/* Styling the Form (Color, Padding, Shadow) */
 		form {
 			background-color: #fff;
-/* 			min-width: 300px; */
+			width:85%;
 			max-width: 500px;
 			margin: auto;
 			margin-top: 50px;

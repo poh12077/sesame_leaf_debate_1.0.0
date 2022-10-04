@@ -3,29 +3,11 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta name="viewport" content="width=device-width" , initial-scale="1" />
-        <!-- 반응형 웹에 사용하는 메타태그 -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="css/bootstrap.css" />
+        <link rel="stylesheet" href="login_join.css">
         <title>Just Pick</title>
-        <style>
-		body {
-			background-color: #05c46b;
-		}
-		
-		button {
-			margin: 7px;
-			float: right;
-			color: black;
-			text-align: center;
-			padding: 7px 7px;
-			 font-size: 16px;
-		}
-		
-		#div_menu {
-			color: #05c46b;
-			height: 70px;
-		}
-		</style>
+    
     </head>
     <body>
   		<div id="div_menu">

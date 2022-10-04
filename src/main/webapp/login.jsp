@@ -5,33 +5,10 @@
 
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<meta name="viewport" content="width=device-width" , initial-scale="1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<!-- 반응형 웹에 사용하는 메타태그 -->
 		<link rel="stylesheet" href="css/bootstrap.css">
-		<style>
-		body {
-			background-color: #05c46b;
-		}
-		
-		button {
-			margin: 7px;
-			float: right;
-			color: black;
-			text-align: center;
-			padding: 7px 7px;
-			 font-size: 16px;
-		}
-		
-		#div_menu {
-			color: #05c46b;
-			height: 70px;
-		}
-		h1{
-/* 		 display: inline-block; */
-		   text-align: center;
-		   background-color:DodgerBlue;
-		}
-		</style>
+		<link rel="stylesheet" href="login_join.css">
 		<title>Just Pick</title>
 	</head>
 

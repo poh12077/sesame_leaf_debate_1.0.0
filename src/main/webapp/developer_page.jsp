@@ -5,7 +5,7 @@
 
 	<head>
 <!-- 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> -->
-<!-- 		<meta name="viewport" content="width=device-width" , initial-scale="1"> -->
+		 <meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Insert title here</title>
 		<style>
 		body {
@@ -19,12 +19,16 @@
 /* 			font-size : 12px; */
 		}
 		a{
-			font-size : 50px;
+			font-size : 20px;
 /* 			text-align: center; */
 		}
 		h1{
-			font-size : 70px;
+			font-size : 30px;
 /* 			text-align: center; */
+		}
+		img{
+			width:90%;
+			max-width:500px;
 		}
 		
 		</style>

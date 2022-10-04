@@ -6,7 +6,7 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; c harset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
   	 <link rel="stylesheet" href="index.css">
 <!--   	 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script> -->
 <title>just pick up</title>
@@ -32,7 +32,7 @@
 	%>
 
 		<div id="div_menu">
-		<button type="button" onclick="location.href='developer_page.jsp'">developed by</button>
+			<button type="button" onclick="location.href='developer_page.jsp'">developed by</button>
 			<button type="button" onclick="location.href='logout.jsp'">sign out</button>
 		</div>
 				<form method="post" action="doughnut_chart.jsp" target="question_1_doughnut" >
@@ -69,10 +69,10 @@
 							<label for="check_option"><span style="color: #ff8000;font-weight:bold">2.</span> check_two </label>
 							<br>
 							<input type="radio" id="question_2_check_3" name="check_option" value="check_3">
-							<label for="check_option"><span style="color: #00ffff;font-weight:bold">3.</span> check_three </label>
+							<label for="check_option"><span style="color: #0040ff;font-weight:bold">3.</span> check_three </label>
 							<br>
 							<input type="radio" id="question_2_check_4" name="check_option" value="check_4">
-							<label for="check_option"><span style="color: #0000ff;font-weight:bold">4.</span> check_four </label>
+							<label for="check_option"><span style="color: #8000ff;font-weight:bold">4.</span> check_four </label>
 							<br>
 							<input type="radio" id="question_2_check_5" name="check_option" value="check_5">
 							<label for="check_option"><span style="color: #ff0080;font-weight:bold">5.</span> check_five </label>
@@ -152,7 +152,6 @@
 						<iframe id="iframe_doughnut" name="question_5_doughnut"  ></iframe>
 					</div>
 				</form>
-				
 				<script src="fontawesome_a076d05399.js"></script>
 				
 <script>
