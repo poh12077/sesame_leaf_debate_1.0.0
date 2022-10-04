@@ -4,8 +4,14 @@ public class Data {
 	private String check_option;
 	private String question_number;
 	private String userID;
+	private int number_of_check_options;
 	
-	
+	public int getNumber_of_check_options() {
+		return number_of_check_options;
+	}
+	public void setNumber_of_check_options(int number_of_check_options) {
+		this.number_of_check_options = number_of_check_options;
+	}
 	public String getUserID() {
 		return userID;
 	}

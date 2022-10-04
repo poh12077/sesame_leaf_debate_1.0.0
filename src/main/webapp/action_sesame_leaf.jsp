@@ -38,17 +38,16 @@
 				<form method="post" action="doughnut_chart.jsp" target="question_1_doughnut" >
 					<div class ="pick">
 					<fieldset>
-							<legend>1. pick one please</legend>
-							<input type="hidden" name="question_number" value="question_1">
-							<input type="hidden" name="number_of_check_options" value=3>
-							<input type="radio" id="question_1_check_1" name="check_option" value="check_1">
-							<label for="check_option"  ><i id="icon_check_1" class="fas fa-cloud" ></i> check_one </label>
+							<legend>남친(여친)이 내 친구 깻잎을 떼어 주면..?</legend>
+							<input type="hidden" name="question_number" value="question_one">
+							<input type="radio" id="question_one_check_one" name="check_option" value="check_one"  style="background-color: #d1d3d1;"  >
+							<label for="check_option"  ><i id="icon_check_1" class="fas fa-cloud" ></i> 난 쿨하니까 괜찮다 </label>
 							<br>
-							<input type="radio" id="question_1_check_2" name="check_option" value="check_2">
-							<label for="check_option"  ><i id="icon_check_2" class="fas fa-cloud" ></i> check_two</label>
+							<input type="radio" id="question_one_check_two" name="check_option" value="check_two">
+							<label for="check_option"  ><i id="icon_check_2" class="fas fa-cloud" ></i> 조금 거슬린다</label>
 							<br>
-							<input type="radio" id="question_1_check_3" name="check_option" value="check_3">
-							<label for="check_option"><i id="icon_check_3" class="fas fa-cloud" ></i> check_three </label>
+							<input type="radio" id="question_one_check_three" name="check_option" value="check_three">
+							<label for="check_option"><i id="icon_check_3" class="fas fa-cloud" ></i> 미친 거 아냐? </label>
 							<br>
 							<input type="submit" value="Submit"> 
 						</fieldset>
@@ -59,23 +58,16 @@
 				<form method="post" action="doughnut_chart.jsp" target="question_2_doughnut" >
 					<div class="pick">
 						<fieldset>
-							<legend>2. pick one please</legend>
-							<input type="hidden" name="question_number" value="question_2">
-							<input type="hidden" name="number_of_check_options" value=5>
-							<input type="radio" id="question_2_check_1" name="check_option" value="check_1">
-							<label for="check_option"><span style="color:#ff0000;font-weight:bold">1.</span> check_one</label>
+							<legend>동시에 여려명 썸 타면 바람?</legend>
+							<input type="hidden" name="question_number" value="question_two">
+							<input type="radio" id="question_two_check_one" name="check_option" value="check_one">
+							<label for="check_option"><i id="icon_check_1" class="fas fa-cloud" ></i> 에이~ 아직 사귀는 사이도 아닌데</label>
 							<br>
-							<input type="radio" id="question_2_check_2" name="check_option" value="check_2">
-							<label for="check_option"><span style="color: #ff8000;font-weight:bold">2.</span> check_two </label>
+							<input type="radio" id="question_two_check_two" name="check_option" value="check_two">
+							<label for="check_option"><i id="icon_check_2" class="fas fa-cloud" ></i> 양심에 찔려서 고민된다 </label>
 							<br>
-							<input type="radio" id="question_2_check_3" name="check_option" value="check_3">
-							<label for="check_option"><span style="color: #00ffff;font-weight:bold">3.</span> check_three </label>
-							<br>
-							<input type="radio" id="question_2_check_4" name="check_option" value="check_4">
-							<label for="check_option"><span style="color: #0000ff;font-weight:bold">4.</span> check_four </label>
-							<br>
-							<input type="radio" id="question_2_check_5" name="check_option" value="check_5">
-							<label for="check_option"><span style="color: #ff0080;font-weight:bold">5.</span> check_five </label>
+							<input type="radio" id="question_two_check_three" name="check_option" value="check_three">
+							<label for="check_option"><i id="icon_check_3" class="fas fa-cloud" ></i> 당근 바람이지! 너무 싫어 </label>
 							<br>
 							<input type="submit" value="Submit"> </fieldset>
 					</div>
@@ -87,22 +79,22 @@
 				<form method="post" action="doughnut_chart.jsp" target="question_3_doughnut" >
 					<div class="pick">
 						<fieldset>
-							<legend>3. pick one please</legend>
+							<legend>며칠 전까지 데이트 잘하고 헤어진 썸녀가 갑자기 24시간동안 연락이 안된다면 당신의 생각은 ?</legend>
 							<input type="hidden" name="question_number" value="question_three">
 							<input type="radio" id="question_three_check_one" name="check_option" value="check_one">
-							<label for="check_option"><i id="icon_check_1" class="fas fa-cloud" ></i> check_one </label>
+							<label for="check_option"><i id="icon_check_1" class="fas fa-cloud" ></i> 원래 답장이 늦는 사람인가보지 </label>
 							<br>
 							<input type="radio" id="question_three_check_two" name="check_option" value="check_two">
-							<label for="check_option"><i id="icon_check_2" class="fas fa-cloud" ></i> check_two</label>
+							<label for="check_option"><i id="icon_check_2" class="fas fa-cloud" ></i> 사고 났나? </label>
 							<br>
 							<input type="radio" id="question_three_check_three" name="check_option" value="check_three">
-							<label for="check_option"><i id="icon_check_3" class="fas fa-cloud" ></i> check_three</label>
+							<label for="check_option"><i id="icon_check_3" class="fas fa-cloud" ></i> 어장 </label>
 							<br>
 							<input type="radio" id="question_three_check_four" name="check_option" value="check_four">
-							<label for="check_option"><i id="icon_check_4" class="fas fa-cloud" ></i> check_four </label>
+							<label for="check_option"><i id="icon_check_4" class="fas fa-cloud" ></i> 나를 테스트 하는구만 </label>
 							<br>
 							<input type="radio" id="question_three_check_five" name="check_option" value="check_five">
-							<label for="check_option"><i id="icon_check_5" class="fas fa-cloud" ></i> check_five </label>
+							<label for="check_option"><i id="icon_check_5" class="fas fa-cloud" ></i> 썸 쫑났네 </label>
 							<br>
 							<input type="submit" value="Submit"> </fieldset>
 					</div>
@@ -164,17 +156,17 @@ let check = (question_number_check_option) => {
 	 }
 	} 
  
-let question_number_check_option = "<%= userDAO.read_check_option_in_user("question_1",userID ) %>";
+let question_number_check_option = "<%= userDAO.read_check_option_in_user("question_one",userID ) %>";
 check(question_number_check_option);
 
-question_number_check_option = "<%= userDAO.read_check_option_in_user("question_2", userID ) %>";
+question_number_check_option = "<%= userDAO.read_check_option_in_user("question_two", userID ) %>";
 check(question_number_check_option);
 
-question_number_check_option = "<%= userDAO.read_check_option_in_user("question_3", userID ) %>";
+question_number_check_option = "<%= userDAO.read_check_option_in_user("question_three", userID ) %>";
 check(question_number_check_option);
-question_number_check_option = "<%= userDAO.read_check_option_in_user("question_4", userID ) %>";
+question_number_check_option = "<%= userDAO.read_check_option_in_user("question_four", userID ) %>";
 check(question_number_check_option);
-question_number_check_option = "<%= userDAO.read_check_option_in_user("question_5", userID ) %>";
+question_number_check_option = "<%= userDAO.read_check_option_in_user("question_fives", userID ) %>";
 check(question_number_check_option);
 </script>
 				

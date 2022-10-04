@@ -7,6 +7,8 @@
 <jsp:setProperty name="data" property="check_option" />
 <jsp:setProperty name="data" property="question_number" />
 <jsp:setProperty name="data" property="userID" />
+<jsp:setProperty name="data" property="number_of_check_options" />
+
 
 <!DOCTYPE html>
 <html>
@@ -49,12 +51,19 @@
 			
 <script>
 
-var xValues1 = ["check_one", "check_two", "check_three"];
-var yValues1 = [<%=userDAO.read(data.getQuestion_number(),"check_one") %>, <%=userDAO.read(data.getQuestion_number(),"check_two") %>, <%=userDAO.read(data.getQuestion_number(),"check_three") %> ];
+var xValues1 = [1,2,3,4,5,6,7,8,9,10];
+var yValues1 = [<%=userDAO.read_total_check_result(data.getQuestion_number(),"check_1") %>, <%=userDAO.read_total_check_result(data.getQuestion_number(),"check_2") %>, <%=userDAO.read_total_check_result(data.getQuestion_number(),"check_3") %>, <%=userDAO.read_total_check_result(data.getQuestion_number(),"check_4") %>, <%=userDAO.read_total_check_result(data.getQuestion_number(),"check_5") %>, <%=userDAO.read_total_check_result(data.getQuestion_number(),"check_6")%>, <%=userDAO.read_total_check_result(data.getQuestion_number(),"check_7")%>, <%=userDAO.read_total_check_result(data.getQuestion_number(),"check_8")%>, <%=userDAO.read_total_check_result(data.getQuestion_number(),"check_9")%>, <%=userDAO.read_total_check_result(data.getQuestion_number(),"check_10")%> ];
+let number_of_check_options = <%=data.getNumber_of_check_options()%>;
+for(let i=0; i< 10 - number_of_check_options; i++){
+	yValues1.pop();
+}
+
 var barColors1 = [
   "#ff0000",
   "#ff8000",
-  "#ffff00"
+  "#00ffff",
+  "#0000ff",
+  "#ff0080"
 ];
 
 let total_respondent_number = yValues1.reduce((partialSum, a) => partialSum + a, 0);

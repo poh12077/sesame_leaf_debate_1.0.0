@@ -41,7 +41,7 @@ public class UserDAO {
 		String sql = null;
 		String previous_check_option = read_only_check_option_in_user(question_number, data.getUserID());
 		if(previous_check_option!=null) {
-			sql = "update check_result set " + previous_check_option + " = " + previous_check_option
+			sql = "update total_check_result set " + previous_check_option + " = " + previous_check_option
 					+ " - 1 where question_number = ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, question_number);
@@ -51,16 +51,16 @@ public class UserDAO {
 
 		String new_check_option = data.getCheck_option();
 
-		sql = "update check_result set " + new_check_option + " = " + new_check_option
+		sql = "update total_check_result set " + new_check_option + " = " + new_check_option
 				+ " + 1 where question_number = ?";
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, question_number);
 		return pstmt.executeUpdate();
 	}
 
-	public int read(String question_number, String check_option) {
+	public int read_total_check_result(String question_number, String check_option) {
 		try {
-			String sql = "select * from check_result WHERE question_number = ?";
+			String sql = "select * from total_check_result WHERE question_number = ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, question_number);
 			rs = pstmt.executeQuery();
