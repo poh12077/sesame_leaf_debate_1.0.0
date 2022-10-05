@@ -33,16 +33,16 @@
 		<div id="div_menu">
 			<button type="button" onclick="location.href='developer_page.jsp'">developed by</button>
 			<button type="button" onclick="location.href='logout.jsp'">sign out</button>
-			<button type="button" onclick="location.href='action_english.jsp'">English</button>
+			<button type="button" onclick="location.href='action.jsp'">korean</button>
 		</div>
 				<form id="question_1" method="post" action="doughnut_chart.jsp" target="question_1_doughnut" >
 					<div class ="pick">
 					<fieldset>
-							<legend>1. pick one please</legend>
+							<legend>1. pick one pleaseqwrfwe</legend>
 							<input type="hidden" name="question_number" value="question_1">
 							<input type="hidden" name="number_of_check_options" value=3>
 							<input type="radio" id="question_1_check_1" name="check_option" class="question_1" value="check_1">
-							<label for="check_option"  ><i id="icon_check_1" class="fas fa-cloud" ></i> check_one </label>
+							<label for="check_option"  ><i id="icon_check_1" class="fas fa-cloud" ></i> check_onewew </label>
 							<br>
 							<input type="radio" id="question_1_check_2" name="check_option" class="question_1" value="check_2">
 							<label for="check_option"  ><i id="icon_check_2" class="fas fa-cloud" ></i> check_two</label>

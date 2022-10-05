@@ -31,7 +31,7 @@
                                 <label class="btn btn-primary active"> <input type="radio" name="userGender" autocomplete="off" value="female" checked />female </label>
                             </div>
                         </div>
-                        <input type="submit" class="btn btn-primary form-control" value="회원가입" />
+                        <input type="submit" class="btn btn-primary form-control" value="sing up" />
                     </form>
                 </div>
             </div>
