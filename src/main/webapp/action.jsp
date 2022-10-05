@@ -8,7 +8,6 @@
 <meta http-equiv="Content-Type" content="text/html; c harset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   	 <link rel="stylesheet" href="index.css">
-<!--   	 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script> -->
 <title>just pick up</title>
 </head>
 <body>
@@ -35,7 +34,7 @@
 			<button type="button" onclick="location.href='developer_page.jsp'">developed by</button>
 			<button type="button" onclick="location.href='logout.jsp'">sign out</button>
 		</div>
-				<form method="post" action="doughnut_chart.jsp" target="question_1_doughnut" >
+				<form id="question_1" method="post" action="doughnut_chart.jsp" target="question_1_doughnut" >
 					<div class ="pick">
 					<fieldset>
 							<legend>1. pick one please</legend>
@@ -52,11 +51,11 @@
 							<br>
 							<input type="submit" value="Submit"> 
 						</fieldset>
-				</div>
+					</div>
 					<iframe id="iframe_doughnut" name="question_1_doughnut"  ></iframe>
 				</form>
 				
-				<form method="post" action="doughnut_chart.jsp" target="question_2_doughnut" >
+				<form id="question_2" method="post" action="doughnut_chart.jsp" target="question_2_doughnut" >
 					<div class="pick">
 						<fieldset>
 							<legend>2. pick one please</legend>
@@ -157,9 +156,12 @@
 <script>
 
 let check = (question_number_check_option) => {
+	let question_number = question_number_check_option.split("_")[0]+"_"+question_number_check_option.split("_")[1];
 	 let null_check = question_number_check_option.split("_")[2];
 	 if( null_check!="null"){
 		 document.getElementById(question_number_check_option).checked = true;
+		 let form = document.getElementById(question_number);
+		 form.submit();
 	 }
 	} 
  

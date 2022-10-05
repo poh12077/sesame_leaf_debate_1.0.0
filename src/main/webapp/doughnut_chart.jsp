@@ -37,8 +37,7 @@
 		if(data.getCheck_option()==null){
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
-			script.println("alert('pick one please.')");
-// 			script.println("location.href = 'login.jsp'");
+// 			script.println("alert('pick one please.')");
 			script.println("</script>");
 			graph_display=0;
 			
