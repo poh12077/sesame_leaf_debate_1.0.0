@@ -5,7 +5,6 @@ public class Data {
 	private String question_number;
 	private String userID;
 	private int number_of_check_options;
-	
 	public int getNumber_of_check_options() {
 		return number_of_check_options;
 	}

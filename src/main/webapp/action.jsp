@@ -40,16 +40,16 @@
 							<legend>1. pick one please</legend>
 							<input type="hidden" name="question_number" value="question_1">
 							<input type="hidden" name="number_of_check_options" value=3>
-							<input type="radio" id="question_1_check_1" name="check_option" value="check_1">
+							<input type="radio" id="question_1_check_1" name="check_option" class="question_1" value="check_1">
 							<label for="check_option"  ><i id="icon_check_1" class="fas fa-cloud" ></i> check_one </label>
 							<br>
-							<input type="radio" id="question_1_check_2" name="check_option" value="check_2">
+							<input type="radio" id="question_1_check_2" name="check_option" class="question_1" value="check_2">
 							<label for="check_option"  ><i id="icon_check_2" class="fas fa-cloud" ></i> check_two</label>
 							<br>
-							<input type="radio" id="question_1_check_3" name="check_option" value="check_3">
+							<input type="radio" id="question_1_check_3" name="check_option" class="question_1" value="check_3">
 							<label for="check_option"><i id="icon_check_3" class="fas fa-cloud" ></i> check_three </label>
 							<br>
-							<input type="submit" value="Submit"> 
+							<input type="submit" value="Submit" onclick="is_question_checked('question_1')" > 
 						</fieldset>
 					</div>
 					<iframe id="iframe_doughnut" name="question_1_doughnut"  ></iframe>
@@ -61,22 +61,22 @@
 							<legend>2. pick one please</legend>
 							<input type="hidden" name="question_number" value="question_2">
 							<input type="hidden" name="number_of_check_options" value=5>
-							<input type="radio" id="question_2_check_1" name="check_option" value="check_1">
+							<input type="radio" id="question_2_check_1" name="check_option" class="question_2" value="check_1">
 							<label for="check_option"><span style="color:#ff0000;font-weight:bold">1.</span> check_one</label>
 							<br>
-							<input type="radio" id="question_2_check_2" name="check_option" value="check_2">
+							<input type="radio" id="question_2_check_2" name="check_option" class="question_2" value="check_2">
 							<label for="check_option"><span style="color: #ff8000;font-weight:bold">2.</span> check_two </label>
 							<br>
-							<input type="radio" id="question_2_check_3" name="check_option" value="check_3">
+							<input type="radio" id="question_2_check_3" name="check_option" class="question_2" value="check_3">
 							<label for="check_option"><span style="color: #0040ff;font-weight:bold">3.</span> check_three </label>
 							<br>
-							<input type="radio" id="question_2_check_4" name="check_option" value="check_4">
+							<input type="radio" id="question_2_check_4" name="check_option" class="question_2" value="check_4">
 							<label for="check_option"><span style="color: #8000ff;font-weight:bold">4.</span> check_four </label>
 							<br>
-							<input type="radio" id="question_2_check_5" name="check_option" value="check_5">
+							<input type="radio" id="question_2_check_5" name="check_option" class="question_2" value="check_5">
 							<label for="check_option"><span style="color: #ff0080;font-weight:bold">5.</span> check_five </label>
 							<br>
-							<input type="submit" value="Submit"> </fieldset>
+							<input type="submit" value="Submit" onclick="is_question_checked('question_2')"> </fieldset>
 					</div>
 					<div>
 						<iframe id="iframe_doughnut" name="question_2_doughnut"  ></iframe>
@@ -165,6 +165,24 @@ let check = (question_number_check_option) => {
 	 }
 	} 
  
+ let is_question_checked=(question_number)=>{
+	 	var selected = false;
+	    var radios = document.getElementsByClassName(question_number);
+	    for (var radio of radios)
+	    {
+	        if (radio.type === 'radio' && radio.checked)
+	        {
+// 	            alert('Thank you for submitting your preference.');
+	            selected = true;
+	        }
+	    }
+	 
+	    if (!selected) {
+	        alert('pick one please');
+	    }
+ }
+ 
+
 let question_number_check_option = "<%= userDAO.read_check_option_in_user("question_1",userID ) %>";
 check(question_number_check_option);
 

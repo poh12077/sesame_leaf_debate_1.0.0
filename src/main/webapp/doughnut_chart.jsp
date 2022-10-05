@@ -9,7 +9,6 @@
 <jsp:setProperty name="data" property="userID" />
 <jsp:setProperty name="data" property="number_of_check_options" />
 
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,12 +34,11 @@
 		}
 		
 		if(data.getCheck_option()==null){
-			PrintWriter script = response.getWriter();
-			script.println("<script>");
-// 			script.println("alert('pick one please.')");
-			script.println("</script>");
 			graph_display=0;
-			
+// 				PrintWriter script = response.getWriter();
+// 				script.println("<script>");
+// 				script.println("alert('pick one please.')");
+// 				script.println("</script>");
 		}
 		int updateResult = userDAO.update(data);
 		if (updateResult >= -1) {

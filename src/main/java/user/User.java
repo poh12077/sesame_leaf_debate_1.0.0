@@ -6,7 +6,6 @@ public class User {
 	private String userPassword;
 	private String userGender;
 	
-	
 	public String getUserGender() {
 		return userGender;
 	}
